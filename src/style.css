@@ -1,0 +1,157 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    color: #00ff00;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Container Styles */
+#upload-section, #files-section {
+    background: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+#upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Button Styles */
+button {
+    background-color: #00ff00;
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #32cd32;
+}
+
+/* File Input Styles */
+input[type="file"] {
+    margin: 10px 0;
+    color: #e0e0e0;
+    border: 1px solid #00ff00;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #1a1a1a;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #00ff00;
+    color: #000000;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #32cd32;
+}
+
+/* File List Styles */
+#fileList {
+    list-style: none;
+    padding: 0;
+}
+
+#fileList li {
+    background-color: #333333;
+    border: 1px solid #00ff00;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #e0e0e0;
+}
+
+#fileList li:hover {
+    background-color: #444444;
+    cursor: pointer;
+}
+
+/* Additional styles for the form and list under h3 and h4 */
+#getFilesForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#getFilesForm input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #00ff00;
+    border-radius: 4px;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+#getFilesForm input[type="text"]:focus {
+    outline: none;
+    border-color: #32cd32;
+}
+
+#getFilesForm button {
+    background-color: #00ff00;
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#getFilesForm button:hover {
+    background-color: #32cd32;
+}
+
+#fileLinks {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#fileLinks li {
+    background-color: #333333;
+    border: 1px solid #00ff00;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 80%;
+    cursor: pointer;
+    color: #e0e0e0;
+}
+
+#fileLinks li:hover {
+    background-color: #444444;
+}
+
+/* Image Styles */
+#fileImages img {
+    max-width: 200px;
+    margin: 10px;
+    border: 2px solid #00ff00;
+    border-radius: 8px;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeOgram</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>MemeOgram</h1>
+    <div id="upload-section">
+        <h2>Upload Memes</h2>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <!-- Accept image files only -->
+            <input type="file" name="file" accept="image/*" required />
+            <button type="submit">Upload</button>
+        </form>          
+    </div>
+
+    <h2>Check Your Memes</h2>
+    <form id="getFilesForm" action="/getFiles" method="POST">
+        <input type="text" id="userAddress" name="userAddress" placeholder="Enter Educhain Address" required>
+        <button type="submit">Get Files</button>
+    </form>
+
+    <h3>Stored Files:</h3>
+    <div id="fileImages"></div>
+
+    <script>
+        document.getElementById('getFilesForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const userAddress = document.getElementById('userAddress').value;
+
+            try {
+                const response = await fetch('/getFiles', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userAddress: userAddress })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const ipfsLinks = data.ipfsLinks;
+
+                    const fileImagesDiv = document.getElementById('fileImages');
+                    fileImagesDiv.innerHTML = ''; // Clear previous images
+
+                    if (ipfsLinks.length === 0) {
+                        fileImagesDiv.textContent = 'No memes found for this address.';
+                    } else {
+                        ipfsLinks.forEach(link => {
+                            const img = document.createElement('img');
+                            img.src = link;
+                            img.alt = 'Meme Image';
+                            img.style.maxWidth = '200px'; // Resize for better display
+                            img.style.margin = '10px';
+                            fileImagesDiv.appendChild(img);
+                        });
+                    }
+                } else {
+                    console.error('Failed to fetch IPFS links');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
